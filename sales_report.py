@@ -36,3 +36,20 @@ for line in f:
 #each of them
 for i in range(len(salespeople)):
     print(f'{salespeople[i]} sold {melons_sold[i]} melons')
+
+
+
+import sys
+def print_the_sales_report(filename):
+    info_dict = {}
+    info_sheet = open(filename)
+    for line in info_sheet:
+        line = line.rstrip()
+        name, dollars, sold = line.split("|")
+        info_dict[name] = info_dict.get(name,0) + int(sold)
+    
+    for name, quantity in info_dict.items():
+        print(f"{name} sold {quantity} melons")
+
+sale_info = sys.argv[1]
+print_the_sales_report(sale_info)
